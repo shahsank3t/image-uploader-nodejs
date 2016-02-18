@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Image Uploader</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+                <h1 class="text-center">Image Uploader</h1>
+                <br/>
+                <h4>
+					Choose an image to upload (Image size: 1024 x 1024) :
+                </h4>
+                <br/>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                    	<input type="file" name="fileToUpload" accept="image/*">
+                    </div>
+                    <input id="submit" type="button" value="Upload Image"class="btn btn-primary">
+                </form>
+                <div id="preview" align="center"></div>
+        </div>
+		<script src="libs/jquery.min.js"></script>
+		<script src="libs/bootstrap.min.js"></script>
+		<script src="util.js"></script>
+	</body>
+</html>
