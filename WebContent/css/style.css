@@ -1,3 +1,17 @@
+.loader {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(255,255,255,0.75);
+	z-index: 999;
+}
+.mascot {
+	position: absolute;
+	top: 30%;
+	left: 40%;
+}
 #preview > img {
 	display: block;
 }
