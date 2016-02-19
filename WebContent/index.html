@@ -19,20 +19,23 @@
             <h1 class="text-center">Image Uploader</h1>
             <br/>
             <h4>
-				Choose an image to upload (Image size: 1024 x 1024) :
+				Choose an image to upload (Minimum image size: 755 x 450, Recommended size: 1024 x 1024) :
             </h4>
             <br/>
             <form class="form-inline" role="form">
                 <div class="form-group">
 					<input type="file" name="fileToUpload" accept="image/*">
                 </div>
-                <input id="submit" type="button" value="Upload Image"class="btn btn-primary">
             </form>
-            <div id="loading" class="loader" style="display:none;">
+            <h3>
+				<b>NOTE:</b>
+				Images are being uploaded to <a href="http://cloudinary.com/" target="_blank">cloudinary</a> server so it may take a while.
+			</h3>
+            <div id="loading" class="loader displayNone">
 		        <img src="images/loader.gif" class="mascot" />
 		    </div>
-            <div id="preview" align="center"></div>
         </div>
+        <div id="preview"></div>
 		<script src="libs/jquery.min.js"></script>
 		<script src="libs/bootstrap.min.js"></script>
 		<script src="util.js"></script>

@@ -1,21 +1,22 @@
 (function(){
 	'use strict';
 	var preview = $('#preview');
+	preview.hide();
 
 	function validateAction(fileObj){
-		var width = 1024,
-			height = 1024,
+		var minWidth = 755,
+			minHeight = 450,
 			img = new Image();
 
         img.onload = function() {
-        	if(this.width === width && this.height === height){
-        		uploadAction($('[type="file"]')[0].files[0]);
-        	} else {
+			if(this.width >= minWidth && this.height >= minHeight){
+				uploadAction($('[type="file"]')[0].files[0]);
+			} else {
 				$('#loading').hide();
-        		alert("Image dimensions are not proper.\n"+
-        			"Current dimensions: "+this.width + " x " + this.height+"\n"+
-        			"Required dimensons: "+width + " x " + height);
-        	}
+				alert("Image dimensions does not meet the requirement.\n"+
+					"Current dimensions: "+this.width + " x " + this.height+"\n"+
+					"Required minimum dimensons: "+minWidth + " x " + minHeight);
+			}
         };
         img.onerror = function() {
 			$('#loading').hide();
@@ -37,12 +38,9 @@
 			success: function(data){
 				if(data.status === 'success'){
 					$('#loading').hide();
-					preview.html('<label>Uploaded images:</label><br/>');
-					data.images.forEach(function(obj){
-						var img = new Image();
-						img.src = obj.url;
-						preview.append('<label>'+obj.type+':</label>').append(img).append('<br/>');
-					});
+					if(data.images){
+						showImages(data.images);
+					}
 				}
 			},
 			error: function(data){
@@ -52,9 +50,21 @@
 		});
 	}
 
+	function showImages(images){
+		preview.html('<h3 class="heading">Uploaded images:</h3>');
+		images.forEach(function(obj){
+			var elem = '<div>'+
+							'<h4>'+obj.type+' ('+obj.dimensions+'):</h4>'+
+							'<img src="'+obj.url+'">'+
+						'</div>';
+			preview.append(elem);
+		});
+		preview.show();
+	}
 
-	$('#submit').on('click', function(e){
-		preview.empty();
+
+	$('[name="fileToUpload"]').change(function(e){
+		preview.empty().hide();
 		$('#loading').show();
 		var fileInput = $('[type="file"]')[0];
 		var fileObj = fileInput.files[0];

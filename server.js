@@ -24,8 +24,8 @@ app.use(express.static(__dirname+'/WebContent'));
 
 var sizeArr = [	{type: 'horizontal', width: 755, height:450},
 				{type: 'vertical', width: 365, height:450},
-				{type: 'horizontal_small', width: 365, height:212},
-				{type: 'gallery', width: 380, height:380}
+				{type: 'gallery', width: 380, height:380},
+				{type: 'horizontal_small', width: 365, height:212}
 			];
 
 //Upload cropped images to Cloudinary Image Storage Server
@@ -62,7 +62,7 @@ app.post('/upload', function(req, res){
 			//Delete cropped images from local server
 			sizeArr.forEach(function(obj){
 				fs.unlink(uploadPath+obj.type+'/'+name);
-				response.push({type: obj.type});
+				response.push({type: obj.type, dimensions: obj.width+' X '+obj.height});
 			});
 
 			cloudResults.forEach(function(obj, i){

@@ -1,3 +1,12 @@
+/*
+	Bootstrap CSS
+ */
+.row {
+	margin-left: 10px;
+}
+/*
+	Local CSS
+ */
 .loader {
 	position: fixed;
 	top: 0;
@@ -10,8 +19,27 @@
 .mascot {
 	position: absolute;
 	top: 30%;
-	left: 40%;
+	left: 45%;
 }
-#preview > img {
-	display: block;
+.heading {
+	margin-left: 55px;
+}
+#preview {
+	display: inline-block;
+    margin-left: 6%;
+    padding: 11px;
+    border: 1px dotted;
+}
+#preview > div {
+	padding: 5px;
+	text-align: center;
+}
+#preview > div + div {
+    float: left;
+}
+#preview > div > h4 {
+	text-align: center;
+}
+.displayNone {
+	display: none;
 }
