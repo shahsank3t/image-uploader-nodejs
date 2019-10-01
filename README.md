@@ -14,4 +14,7 @@ Hit the URL: http://localhost:3000 in your web browser.
 If you get any error for `ImageMagick`, it is because ImageMagic is not installed on you machine.
 
 ### To install on ubuntu, run the following command:
-	`apt-get install imagemagick`
+  `apt-get install imagemagick`
+
+### To install on mac, run the following command:
+  `brew update && brew install imagemagick`
